@@ -1,7 +1,17 @@
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import CountryDetails from './components/CountryDetails';
+import CountryList from './components/CountryList';
+import Layout from './layout';
 
-function App() {
-  return <h1>It's working</h1>;
+export default function App() {
+  return (
+    <Layout>
+      <Router>
+        <Routes>
+          <Route path="/" element={<CountryList />} />
+          <Route path="/country/:code" element={<CountryDetails />} />
+        </Routes>
+      </Router>
+    </Layout>
+  );
 }
-
-export default App;
