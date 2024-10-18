@@ -8,7 +8,10 @@ export function ThemeSwitcher() {
 
   // Effect to load theme from localStorage or system preference
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
+    const savedTheme = localStorage.getItem('countries-theme') as
+      | 'light'
+      | 'dark'
+      | null;
     if (savedTheme) {
       setTheme(savedTheme);
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -26,7 +29,7 @@ export function ThemeSwitcher() {
       } else {
         document.documentElement.classList.remove('dark');
       }
-      localStorage.setItem('theme', theme);
+      localStorage.setItem('countries-theme', theme);
     }
   }, [theme]);
 
