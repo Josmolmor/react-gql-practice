@@ -69,7 +69,7 @@ export default function CountryList() {
 
   return (
     <div className="container mx-auto py-8 px-4 min-h-screen">
-      <h1 className="text-4xl font-bold mb-8 text-center">World Explorer</h1>
+      <h1 className="text-4xl font-bold mb-8">Country list</h1>
 
       <div className="mb-6 relative">
         <Input
@@ -144,7 +144,7 @@ export default function CountryList() {
         </>
       )}
 
-      {data && filteredCountries.length === 0 && (
+      {data && !loading && inputValue && filteredCountries.length === 0 && (
         <div className="text-center text-muted-foreground">
           <p>No countries found matching your search.</p>
         </div>

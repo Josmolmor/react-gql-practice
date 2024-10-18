@@ -7,10 +7,7 @@ import { StrictMode } from 'react';
 const client = new ApolloClient({
   uri: 'https://countries.trevorblades.com/',
   cache: new InMemoryCache(),
-  headers: {
-    accept: 'application/json',
-    Authorization: `Bearer ${import.meta.env.VITE_TMDB_API_TOKEN}`, // Replace with your TMDB API token
-  },
+  headers: {},
 });
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
