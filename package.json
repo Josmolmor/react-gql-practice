@@ -1,7 +1,7 @@
 {
   "name": "lottie-test",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -17,6 +17,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "graphql": "^16.9.0",
+    "lottie-react": "^2.4.0",
     "lucide-react": "^0.453.0",
     "postcss": "^8.4.47",
     "react": "^18.3.1",

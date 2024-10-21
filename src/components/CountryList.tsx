@@ -7,6 +7,8 @@ import { MapPin, Flag, Search } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useDebounce } from '@/utils/hooks/useDebounce';
 import { useSearchParams } from 'react-router-dom';
+import Lottie from 'lottie-react';
+import globeAnimation from '../lottie/globe.json';
 
 const GET_COUNTRIES = gql`
   query GetCountries {
@@ -65,11 +67,18 @@ export default function CountryList() {
       searchParams.delete('q');
       setSearchParams(searchParams);
     }
-  }, [debouncedSearchTerm, data]);
+  }, [debouncedSearchTerm, data, setSearchParams, searchParams]);
 
   return (
     <div className="container mx-auto py-8 px-4 min-h-screen">
-      <h1 className="text-4xl font-bold mb-8">Country list</h1>
+      <div className="flex gap-4 mb-8 items-center justify-between">
+        <h1 className="text-4xl font-bold">Country list</h1>
+        <Lottie
+          animationData={globeAnimation}
+          loop={true}
+          className="h-20 w-20"
+        />
+      </div>
 
       <div className="mb-6 relative">
         <Input
@@ -123,7 +132,9 @@ export default function CountryList() {
                 <Card className="hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1 overflow-hidden group h-full">
                   <CardHeader className="pb-4">
                     <CardTitle className="flex items-center space-x-2">
-                      <span className="truncate">{country.name}</span>
+                      <span className="truncate" title={country.name}>
+                        {country.name}
+                      </span>
                       <span className="">{country.emoji}</span>
                     </CardTitle>
                   </CardHeader>
