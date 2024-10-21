@@ -8,6 +8,7 @@ import { useDebounce } from '@/utils/hooks/useDebounce';
 import { useSearchParams } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import globeAnimation from '../lottie/globe.json';
+import emptyAnimation from '../lottie/empty.json';
 import ListSkeleton from './ListSkeleton';
 
 const GET_COUNTRIES = gql`
@@ -143,6 +144,11 @@ export default function CountryList() {
 
       {data && !loading && inputValue && filteredCountries.length === 0 && (
         <div className="text-center text-muted-foreground">
+          <Lottie
+            animationData={emptyAnimation}
+            loop={true}
+            className="h-64 w-64 m-auto"
+          />
           <p>No countries found matching your search.</p>
         </div>
       )}
