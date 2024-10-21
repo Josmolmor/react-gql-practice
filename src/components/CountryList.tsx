@@ -4,11 +4,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Country } from '@/types';
 import { MapPin, Flag, Search } from 'lucide-react';
-import { Skeleton } from '@/components/ui/skeleton';
 import { useDebounce } from '@/utils/hooks/useDebounce';
 import { useSearchParams } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import globeAnimation from '../lottie/globe.json';
+import ListSkeleton from './ListSkeleton';
 
 const GET_COUNTRIES = gql`
   query GetCountries {
@@ -71,7 +71,7 @@ export default function CountryList() {
 
   return (
     <div className="container mx-auto py-8 px-4 min-h-screen">
-      <div className="flex gap-4 mb-8 items-center justify-between">
+      <div className="flex gap-4 mb-4 items-center justify-between">
         <h1 className="text-4xl font-bold">Country list</h1>
         <Lottie
           animationData={globeAnimation}
@@ -94,21 +94,7 @@ export default function CountryList() {
         />
       </div>
 
-      {loading && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {[...Array(8)].map((_, index) => (
-            <Card key={index} className="overflow-hidden">
-              <CardHeader className="pb-2">
-                <Skeleton className="h-6 w-3/4" />
-              </CardHeader>
-              <CardContent>
-                <Skeleton className="h-4 w-1/2 mb-2" />
-                <Skeleton className="h-4 w-1/3" />
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      )}
+      {loading && <ListSkeleton />}
 
       {error && (
         <div className="text-center text-red-500">
